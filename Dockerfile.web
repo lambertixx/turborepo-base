@@ -23,4 +23,6 @@ ENV NODE_ENV=production
 ENV PORT=3000
 COPY --from=build /app /app
 EXPOSE 3000
-CMD ["sh","-c","pnpm --filter @mentoragg/web start -- -p ${PORT}"]
+WORKDIR /app/apps/web
+CMD ["node","node_modules/next/dist/bin/next","start","-p","3000","-H","0.0.0.0"]
+
