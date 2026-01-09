@@ -1,0 +1,22 @@
+{
+  "name": "@mentoragg/trpc",
+  "version": "0.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "dev": "tsc -p tsconfig.json --watch"
+  },
+  "dependencies": {
+    "@mentoragg/db": "workspace:*",
+    "@trpc/server": "10.45.1",
+    "superjson": "2.2.1",
+    "zod": "3.24.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "typescript": "5.5.3"
+  }
+}

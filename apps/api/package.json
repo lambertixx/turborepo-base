@@ -1,0 +1,25 @@
+{
+  "name": "@mentoragg/api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@clerk/backend": "2.27.1",
+    "@fastify/cors": "^8.5.0",
+    "@mentoragg/db": "workspace:*",
+    "@mentoragg/trpc": "workspace:*",
+    "@trpc/server": "10.45.1",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.26.2"
+  },
+  "devDependencies": {
+    "@types/node": "18.19.41",
+    "tsx": "^4.21.0",
+    "typescript": "5.5.3"
+  }
+}

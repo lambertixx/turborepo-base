@@ -1,0 +1,21 @@
+# syntax=docker/dockerfile:1
+FROM node:20-bookworm-slim AS base
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y openssl ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN corepack enable
+
+FROM base AS build
+COPY . .
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
+RUN pnpm install --frozen-lockfile
+RUN pnpm turbo run build --filter=@mentoragg/api...
+
+FROM base AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV PORT=4000
+COPY --from=build /app /app
+EXPOSE 4000
+CMD ["pnpm","--filter","@mentoragg/api","start"]
